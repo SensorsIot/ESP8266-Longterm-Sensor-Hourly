@@ -132,7 +132,7 @@ void setup() {
       }
       // check battery
       if (sleepCount > SLEEP_COUNTS_FOR_BATT_CHECK)
-      { if (ESP.getVcc()* VCC_ADJ < BATT_WARNING_VOLTAGE)
+      { if ((float)ESP.getVcc()* VCC_ADJ < BATT_WARNING_VOLTAGE)
         { sleepCount = 0;  // start from beginning so batt-warning is not sent every wakeup
           buf[0] = MAIL_LOW_BAT;
           system_rtc_mem_write(RTC_MAIL_TYPE, buf, 1); // set mail type to send
@@ -229,5 +229,3 @@ void loop()
 
 
 }
-
-
